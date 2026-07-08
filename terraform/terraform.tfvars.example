@@ -1,0 +1,14 @@
+aws_region          = "us-east-1"
+aws_profile         = "default"
+environment         = "dev"
+name_prefix         = "cspm"
+reports_bucket_name = "cspm-reports-example-000000000000"
+
+# IAM principals allowed to assume the read-only audit role.
+trusted_principal_arns = [
+  "arn:aws:iam::000000000000:role/cspm-scanner",
+]
+
+report_retention_days    = 90
+enable_schedule          = true
+scan_schedule_expression = "rate(24 hours)"

@@ -1,0 +1,20 @@
+{
+  "s3": [
+    {"name": "public-logs", "public": true, "encryption": "none", "versioning": "Suspended"},
+    {"name": "app-data", "public": false, "encryption": "aws:kms", "versioning": "Enabled"}
+  ],
+  "iam": [
+    {
+      "account": {"root_mfa_enabled": false},
+      "password_policy": {"minimum_length": 8},
+      "users": [
+        {"name": "ci-deployer", "access_key_age_days": 220, "key_active": true},
+        {"name": "analyst", "access_key_age_days": 12, "key_active": true}
+      ]
+    }
+  ],
+  "ec2": [
+    {"group_id": "sg-open-ssh", "ingress": [{"port": 22, "cidr": "0.0.0.0/0", "protocol": "tcp"}]},
+    {"group_id": "sg-web", "ingress": [{"port": 443, "cidr": "0.0.0.0/0", "protocol": "tcp"}]}
+  ]
+}
